@@ -15,11 +15,15 @@
   flex-flow: row;
   align-items: flex-end;
 }
+.filter-tabs a {
+  text-decoration: none;
+  padding-bottom: 10px;
+}
 .filter-tab {
   color: #000;
   margin-right: 30px;
   cursor: pointer;
-  padding: 7px 3px;
+  padding-bottom: 10px;
   border-bottom: 3px solid transparent;
 }
 .filter-tab-active {
@@ -111,6 +115,9 @@
   font-weight: 600;
   border-bottom: 1px solid;
   margin: 0;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 20px;
 }
 .filter-modal-options {
   width: 100%;
@@ -193,5 +200,27 @@
 @media only screen and (max-width: 1000px) {
   .list-wrapper {
     justify-content: center !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .filter-sub-menu {
+    justify-content: space-around;
+    height: 140px;
+  }
+  .search-filter-options {
+    flex-direction: column;
+  }
+  .search-container {
+    margin-bottom: 20px;
+  }
+  .filter-modal {
+    position: fixed;
+    left: calc(50% - 200px);
+    right: unset;
+    top: 200px;
+    height: 350px;
+    width: 320px;
+    z-index: 555;
   }
 }

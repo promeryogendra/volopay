@@ -125,3 +125,17 @@
   padding: 1px;
   position: relative;
 }
+
+/* Page not found */
+.page-404-wrapper {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 50px;
+  max-width: 400px;
+  text-align: center;
+}
+.page-404-message {
+}
+.page-404-desc {
+}

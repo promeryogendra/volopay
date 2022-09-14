@@ -1,4 +1,5 @@
 import InfiniteScroll from "react-infinite-scroll-component";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Navbar from "../../components/Navbar";
@@ -9,12 +10,13 @@ import { setDataLoading, getCards } from "../../store/actions/cards";
 import grid from "../../assets/icons/grid.svg";
 import menu_icon from "../../assets/icons/menu.svg";
 import filter_icon from "../../assets/icons/filter.svg";
-import search from "../../assets/icons/search.svg";
 import "./index.css";
 import Button from "../../components/Button";
 import SearchInput from "../../components/SearchInput";
 
 function Home({ cards, auth, getCards, setDataLoading, ...props }) {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [tab, setTab] = useState(1);
   const [page, setPage] = useState(1);
   const [filterOpen, setFilterOpen] = useState(false);
@@ -24,9 +26,25 @@ function Home({ cards, auth, getCards, setDataLoading, ...props }) {
   const [typeSubFilter, setTypeSubFilter] = useState(false);
   const [searchInput, setSearchInput] = useState("");
 
+  const handleRouteChange = () => {
+    let tab_id = id == undefined ? 1 : getTabName(id, true);
+    if (tab_id == undefined) return navigate("/not_found");
+    getCards({ page, limit: 10, new: true, ...getFilter(filters, tab_id) });
+    setTab(tab_id);
+  };
+
   useEffect(() => {
-    getCards({ page, limit: 10, new: true });
+    handleRouteChange();
   }, []);
+
+  useEffect(() => {
+    handleRouteChange();
+  }, [id]);
+
+  const getTabName = (key, name = false) => {
+    if (!name) return { 0: "your", 1: "all", 2: "blocked" }[key];
+    return { your: 0, all: 1, blocked: 2 }[key];
+  };
 
   // infinite scroll data loading
   const handleScroll = (e) => {
@@ -86,13 +104,15 @@ function Home({ cards, auth, getCards, setDataLoading, ...props }) {
 
   // Render tab Item
   const renderTab = (text, index) => (
-    <span
+    <Link
+      to={`/home/${getTabName(index)}`}
       key={index}
       onClick={(e) => handleTabChange(index)}
-      className={`filter-tab ${tab === index && "filter-tab-active"}`}
     >
-      {text}
-    </span>
+      <span className={`filter-tab ${tab === index && "filter-tab-active"}`}>
+        {text}
+      </span>
+    </Link>
   );
 
   return (
@@ -132,7 +152,15 @@ function Home({ cards, auth, getCards, setDataLoading, ...props }) {
           </div>
           {filterOpen && (
             <div className="filter-modal">
-              <p className="filter-modal-head ">Filter</p>
+              <p className="filter-modal-head ">
+                <span>Filter</span>
+                <span
+                  onClick={(e) => setFilterOpen(false)}
+                  style={{ cursor: "pointer" }}
+                >
+                  X
+                </span>
+              </p>
               <div className="filter-modal-options">
                 <p className="fitler-modal-label">Type</p>
                 <div className="row filter-type-options">

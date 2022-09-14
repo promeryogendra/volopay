@@ -24,7 +24,7 @@ function App(props) {
           <BrowserRouter>
             <Routes>
               <Route
-                path="/"
+                path="/home/:id"
                 element={
                   <AuthWrapper>
                     <Home />

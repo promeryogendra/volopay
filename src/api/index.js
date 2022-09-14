@@ -35,7 +35,7 @@ export const loadCardsData = (filter = {}) => {
       let page = parseInt(filter.page ? filter.page.toString() : DEFAULT_PAGE);
       cards = apply_pagination(cards, page, limit);
       resolve({ data: cards, page, limit });
-    }, 1000);
+    }, 600);
   });
 };
 export default {
