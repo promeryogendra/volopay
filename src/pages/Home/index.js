@@ -6,6 +6,7 @@ import Loader from "../../components/Loader";
 import { connect } from "react-redux";
 import { setDataLoading } from "../../store/actions/cards";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Card from "../../components/Card/Card";
 
 const style = {
   height: 80,
@@ -70,22 +71,9 @@ function Home({ cards, auth, getCards, setDataLoading, ...props }) {
           next={handleScroll}
           hasMore={!props.noMoreCards}
         >
-          <div class="row list-wrapper">
-            {cards.map((i, index) => (
-              <div class="single-card col-sm-12 col-lg-6" key={index}>
-                <div class="card">
-                  <div class="card-body">
-                    <h5 class="card-title">{i.name}</h5>
-                    <p class="card-text">
-                      With supporting text below as a natural lead-in to
-                      additional content.
-                    </p>
-                    <a href="#" class="btn btn-primary">
-                      Go somewhere
-                    </a>
-                  </div>
-                </div>
-              </div>
+          <div className="row list-wrapper">
+            {cards.map((card, index) => (
+              <Card card={card} key={index} />
             ))}
           </div>
         </InfiniteScroll>

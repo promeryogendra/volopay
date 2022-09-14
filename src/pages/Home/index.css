@@ -16,27 +16,35 @@
   align-items: flex-end;
 }
 .filter-tab {
-  color: rgb(167, 167, 169);
-  margin-right: 15px;
+  color: #000;
+  margin-right: 30px;
   cursor: pointer;
-  padding: 7px 0;
+  padding: 7px 3px;
   border-bottom: 3px solid transparent;
 }
 .filter-tab-active {
   color: black;
   font-weight: 500;
-  border-bottom: 3px solid #922194;
+  border-bottom: 3px solid #ff275d;
 }
 
 .list-wrapper {
   margin: 0 !important;
+  justify-content: space-between;
 }
 
 .cards-list {
   z-index: 10;
 }
-
 .single-card {
+  max-width: 500px !important;
+  margin-bottom: 30px;
+}
+.single-card .card {
+  box-shadow: -1px 0px 16px -4px #9b9999;
+}
+
+.list-wrapper col {
   margin-bottom: 20px;
 }
 .cards-loading {
