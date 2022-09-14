@@ -18,13 +18,13 @@ export default function Card({ card }) {
               <span className="budget-name">{card.budget_name}</span>
             </div>
             <div className="card-head-image">
-              <img src={card.card_type == "burner" ? burner : rotate} alt="" />
+              <img src={card.card_type === "burner" ? burner : rotate} alt="" />
             </div>
           </div>
           <div className="card-details">
             <span className="type">{card.card_type}</span>
             <span className="date">
-              {card.card_type == "burner"
+              {card.card_type === "burner"
                 ? `Expires: ${new Date(card.expiry).toLocaleDateString()}`
                 : `Limit: ${card.limit} ${
                     card?.available_to_spend?.currency || ""

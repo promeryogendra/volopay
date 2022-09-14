@@ -9,7 +9,7 @@ function Login({ loginLoading, ...props }) {
   const [password, setPassword] = useState("");
 
   const handleChange = (e) => {
-    e.target.name == "username"
+    e.target.name === "username"
       ? setUsername(e.target.value)
       : setPassword(e.target.value);
   };

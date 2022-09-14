@@ -107,3 +107,10 @@
 .green-head::before {
   background-color: #219654;
 }
+
+@media only screen and (max-width: 400px) {
+  .card-details {
+    flex-flow: column;
+    align-items: flex-start;
+  }
+}

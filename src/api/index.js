@@ -5,7 +5,7 @@ export const checkLogin = ({ username, password }) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       let user = database.owners.find(
-        (owner) => owner.id == username && owner.password == password
+        (owner) => owner.id === username && owner.password === password
       );
       return user
         ? resolve({ data: { owner_id: user.id } })

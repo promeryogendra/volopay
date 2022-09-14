@@ -9,10 +9,21 @@ export const filter_data = (data, filter = {}) => {
   filter = filter || {};
   data = validOrEmptyArray(data);
   data = data.filter((obj) => {
-    if (filter.type && obj.type != filter.type) return false;
-    if (filter.status && obj.status != filter.status) return false;
-    if (filter.owner_id && obj.owner_id != filter.owner_id) return false;
-    if (filter.query && obj.name.indexOf(filter.query) == -1) return false;
+    if (filter.type && obj.type !== filter.type) return false;
+    if (
+      filter.card_types &&
+      Array.isArray(filter.card_types) &&
+      filter.card_types.length &&
+      !filter.card_types.includes(obj.card_type)
+    )
+      return false;
+    if (filter.status && obj.status !== filter.status) return false;
+    if (filter.owner_id && obj.owner_id !== filter.owner_id) return false;
+    if (
+      filter.query &&
+      obj.name.toLowerCase().indexOf(filter.query.toLowerCase()) === -1
+    )
+      return false;
     return true;
   });
   return data;
@@ -20,7 +31,7 @@ export const filter_data = (data, filter = {}) => {
 
 export const check_auth = (owners, owner_id) => {
   return !!(Array.isArray(owners) ? owners : []).find(
-    (owner) => owner.id == owner_id
+    (owner) => owner.id === owner_id
   );
 };
 

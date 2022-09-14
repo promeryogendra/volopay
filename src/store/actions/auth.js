@@ -6,6 +6,13 @@ export const setLoading = (loading) => (dispatch) => {
   dispatch({ type: actions.SET_SESSION_LOADING, payload: { loading } });
 };
 
+export const logout = () => (dispatch) => {
+  setAuth({});
+  dispatch({
+    type: actions.SET_SESSION_DATA,
+    payload: { isAuth: false, user: null, loading: false },
+  });
+};
 export const checkSession = () => async (dispatch) => {
   dispatch(setLoading(true));
   try {
