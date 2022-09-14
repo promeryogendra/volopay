@@ -20,7 +20,6 @@ export const checkScrolledBottom = () => {
     document.body.scrollHeight;
   let clientHeight =
     document.documentElement.clientHeight || window.innerHeight;
-  console.log(scrollHeight - Math.ceil(scrollTop + clientHeight));
   return scrollHeight - Math.ceil(scrollTop + clientHeight) < 100;
 };
 

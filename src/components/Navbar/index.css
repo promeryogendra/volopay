@@ -1,0 +1,58 @@
+.navbar-container {
+  width: 100%;
+  min-height: 100px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.app-logo {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  line-height: 30px;
+}
+.learn-more {
+  height: 25px;
+  padding: 2px 5px;
+  border-radius: 5px;
+  display: flex;
+  align-items: flex-end;
+  background-color: #f0f0f0;
+  margin-top: 10px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.learn-more img {
+  margin-right: 5px;
+  height: 22px;
+  width: 22px;
+}
+.learn-more span {
+  line-height: 25px;
+  font-weight: 700;
+  color: #3880ff;
+}
+.app-logo span {
+  font-size: 16px;
+}
+.app-logo .logo {
+  font-size: 35px;
+}
+.icon-image {
+  width: 25px;
+  height: 25px;
+}
+
+.navbar-menu {
+  height: 50px;
+  width: 100%;
+}
+@media only screen and (max-width: 700px) {
+  .navbar-container {
+    padding: 0 10px;
+  }
+  .app-logo .logo {
+    font-size: 25px;
+  }
+}

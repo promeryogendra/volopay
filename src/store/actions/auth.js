@@ -7,6 +7,7 @@ export const setLoading = (loading) => (dispatch) => {
 };
 
 export const checkSession = () => async (dispatch) => {
+  dispatch(setLoading(true));
   try {
     let res = await api.checkSession(getAuth().owner_id);
     return dispatch({

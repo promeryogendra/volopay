@@ -68,6 +68,7 @@
   -webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.16);
   -moz-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.16);
   box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.16);
+  margin-top: -1px;
 }
 
 @media only screen and (max-width: 700px) {
@@ -77,6 +78,7 @@
     right: 20px;
     border: 1px solid #ccdcff;
     z-index: 111;
+    background-color: white;
   }
   .no-floating {
     position: flex !important;
